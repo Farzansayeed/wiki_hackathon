@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WikiExplore – Knowledge at Your Fingertips</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header class="site-header">
+        <div class="header-container">
+            <div class="brand-section">
+                <a href="#home" class="logo">
+                    <span class="logo-icon">🌐</span>
+                    <div class="logo-text">
+                        <span class="logo-title">WikiExplore</span>
+                        <span class="logo-tagline">The Free Encyclopedia</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="header-search">
+                <div class="search-input-wrapper">
+                    <input type="text" id="nav-search-input" placeholder="Search WikiExplore..." autocomplete="off">
+                    <button id="search-btn" class="search-btn" title="Search">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
+                </div>
+                <!-- Search Live Dropdown -->
+                <div id="search-dropdown" class="search-dropdown"></div>
+            </div>
+
+            <nav class="main-nav" id="main-nav">
+                <ul class="nav-links">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#explore" class="nav-link">Explore</a></li>
+                    <li><a href="#categories" class="nav-link">Categories</a></li>
+                    <li><a href="#article" class="nav-link">Article</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <button id="theme-toggle" class="theme-toggle-btn" title="Toggle Theme">
+                    <span id="theme-icon">🌙</span>
+                </button>
+                <button id="mobile-menu-btn" class="mobile-menu-btn" title="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main>
+        <!-- Home / Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <span class="badge-hero">Open Knowledge Repository</span>
+                <h1 class="hero-title">Explore Knowledge. Discover Everything.</h1>
+                <p class="hero-subtitle">Browse interesting topics, discover new ideas, and explore information from around the world.</p>
+                
+                <div class="hero-search-box">
+                    <input type="text" id="hero-search-input" placeholder="What would you like to learn today? (e.g. Artificial Intelligence, Solar System)">
+                    <button id="hero-search-btn" class="btn btn-primary">Search</button>
+                </div>
+
+                <div class="hero-cta-buttons">
+                    <a href="#explore" class="btn btn-primary">Explore Articles</a>
+                    <a href="#categories" class="btn btn-secondary">Browse Categories</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Section -->
+        <section class="featured-section container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Today</h2>
+                <p class="section-desc">Hand-picked article of the day from our knowledge base</p>
+            </div>
+
+            <div class="featured-card">
+                <div class="featured-badge">Featured Article</div>
+                <div class="featured-body">
+                    <div class="featured-info">
+                        <span class="category-tag">Technology</span>
+                        <h3 class="featured-title">Artificial Intelligence</h3>
+                        <p class="featured-text">
+                            Artificial intelligence (AI) is the intelligence of machines or software, as opposed to the intelligence of living beings, primarily of humans. It is a field of study in computer science that develops and studies intelligent machines.
+                        </p>
+                        <div class="featured-meta">
+                            <span>⏱️ 6 min read</span>
+                            <span>📚 7 Sections</span>
+                            <span>⭐ High Importance</span>
+                        </div>
+                        <a href="#article" class="btn btn-primary btn-sm" onclick="loadArticle('ai')">Read Full Article</a>
+                    </div>
+                    <div class="featured-preview-box">
+                        <div class="fact-box">
+                            <h4>Quick Facts</h4>
+                            <ul>
+                                <li><strong>Coined in:</strong> 1956 at Dartmouth College</li>
+                                <li><strong>Pioneers:</strong> Alan Turing, John McCarthy, Marvin Minsky</li>
+                                <li><strong>Subfields:</strong> Machine Learning, Robotics, NLP</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Popular Topics Section -->
+        <section class="popular-section container">
+            <div class="section-header">
+                <h2 class="section-title">Popular Topics</h2>
+                <p class="section-desc">Most researched encyclopedia entries this week</p>
+            </div>
+
+            <div class="popular-cards-row">
+                <div class="popular-card" onclick="loadArticle('space-exploration')">
+                    <div class="popular-icon">🚀</div>
+                    <h4>Space Exploration</h4>
+                    <p>Investigation of outer space using astronomy and space technology.</p>
+                    <span class="card-link">Learn more &rarr;</span>
+                </div>
+                <div class="popular-card" onclick="loadArticle('renewable-energy')">
+                    <div class="popular-icon">⚡</div>
+                    <h4>Renewable Energy</h4>
+                    <p>Energy derived from natural resources that replenish themselves.</p>
+                    <span class="card-link">Learn more &rarr;</span>
+                </div>
+                <div class="popular-card" onclick="loadArticle('world-war-ii')">
+                    <div class="popular-icon">📜</div>
+                    <h4>World War II</h4>
+                    <p>Global conflict that lasted from 1939 to 1945 involving majority of nations.</p>
+                    <span class="card-link">Learn more &rarr;</span>
+                </div>
+                <div class="popular-card" onclick="loadArticle('climate-change')">
+                    <div class="popular-icon">🌍</div>
+                    <h4>Climate Change</h4>
+                    <p>Long-term shifts in temperatures and weather patterns worldwide.</p>
+                    <span class="card-link">Learn more &rarr;</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recently Viewed Section -->
+        <section class="recent-section container">
+            <div class="section-header-compact">
+                <h3 class="recent-heading">🕒 Recently Viewed Articles</h3>
+                <button id="clear-recent-btn" class="text-btn">Clear History</button>
+            </div>
+            <div id="recent-list" class="recent-chips-container">
+                <span class="recent-chip" onclick="loadArticle('ai')">Artificial Intelligence</span>
+                <span class="recent-chip" onclick="loadArticle('solar-system')">Solar System</span>
+                <span class="recent-chip" onclick="loadArticle('computer-science')">Computer Science</span>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section id="categories" class="categories-section container">
+            <div class="section-header">
+                <h2 class="section-title">Browse by Category</h2>
+                <p class="section-desc">Discover curated collections of knowledge grouped by domain</p>
+            </div>
+
+            <div class="categories-grid">
+                <div class="category-card" data-category="Science">
+                    <div class="category-icon">🔬</div>
+                    <h3 class="category-name">Science</h3>
+                    <span class="category-count">2 Articles</span>
+                    <button class="btn btn-outline category-filter-btn" data-category="Science">Explore Science</button>
+                </div>
+                <div class="category-card" data-category="Technology">
+                    <div class="category-icon">💻</div>
+                    <h3 class="category-name">Technology</h3>
+                    <span class="category-count">3 Articles</span>
+                    <button class="btn btn-outline category-filter-btn" data-category="Technology">Explore Tech</button>
+                </div>
+                <div class="category-card" data-category="History">
+                    <div class="category-icon">🏛️</div>
+                    <h3 class="category-name">History</h3>
+                    <span class="category-count">1 Article</span>
+                    <button class="btn btn-outline category-filter-btn" data-category="History">Explore History</button>
+                </div>
+                <div class="category-card" data-category="Geography">
+                    <div class="category-icon">🗺️</div>
+                    <h3 class="category-name">Geography</h3>
+                    <span class="category-count">1 Article</span>
+                    <button class="btn btn-outline category-filter-btn" data-category="Geography">Explore Geography</button>
+                </div>
+                <div class="category-card" data-category="Environment">
+                    <div class="category-icon">🌱</div>
+                    <h3 class="category-name">Environment</h3>
+                    <span class="category-count">2 Articles</span>
+                    <button class="btn btn-outline category-filter-btn" data-category="Environment">Explore Environment</button>
+                </div>
+                <div class="category-card" data-category="Space">
+                    <div class="category-icon">🌌</div>
+                    <h3 class="category-name">Space</h3>
+                    <span class="category-count">2 Articles</span>
+                    <button class="btn btn-outline category-filter-btn" data-category="Space">Explore Space</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Explore Articles Grid Section -->
+        <section id="explore" class="explore-section container">
+            <div class="section-header">
+                <h2 class="section-title">Explore Articles</h2>
+                <p class="section-desc">Filter, sort and discover encyclopedic entries</p>
+            </div>
+
+            <!-- Controls: Category Filter + Sorting -->
+            <div class="filter-controls-bar">
+                <div class="category-pills" id="category-pills">
+                    <button class="pill active" data-filter="all">All</button>
+                    <button class="pill" data-filter="Science">Science</button>
+                    <button class="pill" data-filter="Technology">Technology</button>
+                    <button class="pill" data-filter="History">History</button>
+                    <button class="pill" data-filter="Geography">Geography</button>
+                    <button class="pill" data-filter="Environment">Environment</button>
+                    <button class="pill" data-filter="Space">Space</button>
+                </div>
+
+                <div class="sort-wrapper">
+                    <label for="sort-select">Sort Articles By:</label>
+                    <select id="sort-select" class="sort-select">
+                        <option value="default">Default</option>
+                        <option value="az">A–Z</option>
+                        <option value="category">Category</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Articles Grid -->
+            <div id="articles-grid" class="articles-grid">
+                <!-- Injected via JavaScript -->
+            </div>
+        </section>
+
+        <!-- Article Reader Section -->
+        <section id="article" class="article-section container">
+            <div class="article-container">
+                <!-- Main Article Content -->
+                <article class="article-main" id="article-content-area">
+                    <div class="article-heading-block">
+                        <span class="article-category-badge" id="article-category">Technology</span>
+                        <h1 class="article-main-title" id="article-title">Artificial Intelligence</h1>
+                        <p class="article-subtitle" id="article-subtitle">From Wikipedia and encyclopedic sources, the free knowledge repository.</p>
+                        <hr class="article-divider">
+                    </div>
+
+                    <!-- Article Lead Paragraph -->
+                    <div class="article-lead" id="article-lead">
+                        <p>
+                            <strong>Artificial intelligence</strong> (<strong>AI</strong>) is the intelligence of machines or software, as opposed to the intelligence of living beings, primarily of humans. It is an umbrella field of study in computer science that develops and studies intelligent machines capable of performing complex cognitive tasks.
+                        </p>
+                    </div>
+
+                    <!-- Table of Contents -->
+                    <div class="toc-container" id="toc-box">
+                        <div class="toc-header">
+                            <span class="toc-title">Contents</span>
+                            <button id="toc-toggle" class="toc-toggle-btn">[hide]</button>
+                        </div>
+                        <ol class="toc-list" id="toc-list">
+                            <li><a href="#overview">1. Overview</a></li>
+                            <li><a href="#history">2. History</a></li>
+                            <li><a href="#applications">3. Applications</a></li>
+                            <li><a href="#advantages">4. Advantages</a></li>
+                            <li><a href="#chalenges">5. Challenges</a></li>
+                            <li><a href="#future">6. Future</a></li>
+                            <li><a href="#references">7. References</a></li>
+                        </ol>
+                    </div>
+
+                    <!-- Dynamic Body Content -->
+                    <div class="article-body-content" id="article-body-content">
+                        <section id="overview" class="article-chapter">
+                            <h2>1. Overview</h2>
+                            <p>
+                                Artificial intelligence was founded as an academic discipline in 1956. The various sub-fields of AI research are centered around particular goals and the use of particular tools. The traditional goals of AI research include reasoning, knowledge representation, planning, learning, natural language processing, perception, and the ability to move and manipulate objects.
+                            </p>
+                            <p>
+                                General intelligence (the ability to solve an arbitrary problem) is among the field's long-term goals. To solve these problems, AI researchers have adapted and integrated a wide range of problem-solving techniques, including search and mathematical optimization, formal logic, artificial neural networks, and methods based on statistics, probability, and economics.
+                            </p>
+                        </section>
+
+                        <section id="history" class="article-chapter">
+                            <h2>2. History</h2>
+                            <p>
+                                Thought experiments and mechanical devices simulating intelligence date back to antiquity. In the first half of the 20th century, science fiction familiarized the world with the concept of artificially intelligent robots. By the 1950s, a generation of scientists, mathematicians, and philosophers had the concept of artificial intelligence culturally ingrained in their minds.
+                            </p>
+                            <p>
+                                Alan Turing published his landmark 1950 paper <em>Computing Machinery and Intelligence</em>, proposing the famous "Imitation Game" (now known as the Turing Test). The historic 1956 Dartmouth Summer Research Project on Artificial Intelligence is widely considered the founding event of AI as an academic discipline.
+                            </p>
+                        </section>
+
+                        <section id="applications" class="article-chapter">
+                            <h2>3. Applications</h2>
+                            <p>
+                                AI technology is widely used throughout industry, government, and science. Some high-profile applications are:
+                            </p>
+                            <ul>
+                                <li><strong>Search Engines:</strong> Google, Bing, and recommendation engines (YouTube, Netflix, Amazon).</li>
+                                <li><strong>Natural Language Processing:</strong> Large language models, voice assistants (Siri, Alexa), machine translation.</li>
+                                <li><strong>Autonomous Vehicles:</strong> Self-driving cars, drones, robotic delivery systems.</li>
+                                <li><strong>Healthcare:</strong> Medical diagnostics, drug discovery, genomic analysis.</li>
+                                <li><strong>Creative Tools:</strong> Generative image, code, and music synthesis.</li>
+                            </ul>
+                        </section>
+
+                        <section id="advantages" class="article-chapter">
+                            <h2>4. Advantages</h2>
+                            <p>
+                                The deployment of intelligent algorithms has provided major breakthroughs across multiple sectors. Key benefits include:
+                            </p>
+                            <ul>
+                                <li>Reduction in human error and high precision in repetitive calculations.</li>
+                                <li>24/7 continuous availability and high processing throughput.</li>
+                                <li>Handling dangerous tasks such as bomb disposal, space exploration, and deep-sea mining.</li>
+                                <li>Unlocking patterns in vast multidimensional datasets beyond human capability.</li>
+                            </ul>
+                        </section>
+
+                        <section id="challenges" class="article-chapter">
+                            <h2>5. Challenges</h2>
+                            <p>
+                                Despite its rapid growth, AI poses significant technical, social, and ethical challenges:
+                            </p>
+                            <ul>
+                                <li><strong>Algorithmic Bias:</strong> Models trained on skewed historical datasets can perpetuate societal prejudice.</li>
+                                <li><strong>Hallucinations & Reliability:</strong> Neural networks can generate convincingly false assertions without ground truth.</li>
+                                <li><strong>Energy Consumption:</strong> Training state-of-the-art foundation models demands tremendous computing power and cooling.</li>
+                                <li><strong>Labor Market Disruption:</strong> Automation of cognitive and clerical tasks creates economic transition hurdles.</li>
+                            </ul>
+                        </section>
+
+                        <section id="future" class="article-chapter">
+                            <h2>6. Future</h2>
+                            <p>
+                                The future trajectory of artificial intelligence points toward increased multimodal reasoning, neuromorphic computing hardware, and agentic autonomy. Researchers continue to explore Artificial General Intelligence (AGI)—systems that demonstrate human-level reasoning across arbitrary domains—alongside international frameworks for safety and alignment.
+                            </p>
+                        </section>
+
+                        <section id="references" class="article-chapter">
+                            <h2>7. References</h2>
+                            <ol class="references-list">
+                                <li>Russell, Stuart J.; Norvig, Peter (2020). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson.</li>
+                                <li>Turing, Alan (1950). "Computing Machinery and Intelligence". <em>Mind</em>. 59 (236): 433–460.</li>
+                                <li>McCarthy, John; Minsky, Marvin; Rochester, Nathaniel; Shannon, Claude (1955). "A Proposal for the Dartmouth Summer Research Project on Artificial Intelligence".</li>
+                            </ol>
+                        </section>
+                    </div>
+                </article>
+
+                <!-- Article Infobox / Sidebar -->
+                <aside class="article-sidebar" id="article-infobox">
+                    <div class="infobox-header">
+                        <h3 id="infobox-title">Artificial Intelligence</h3>
+                        <span class="infobox-subtitle">Field of Computer Science</span>
+                    </div>
+                    <div class="infobox-image-placeholder">
+                        <span class="infobox-icon" id="infobox-icon">🤖</span>
+                    </div>
+                    <table class="infobox-table">
+                        <tbody>
+                            <tr>
+                                <th>Topic:</th>
+                                <td id="info-topic">Artificial Intelligence</td>
+                            </tr>
+                            <tr>
+                                <th>Field:</th>
+                                <td id="info-field">Computer Science & Cognitive Systems</td>
+                            </tr>
+                            <tr>
+                                <th>First Developed:</th>
+                                <td id="info-year">1956 (Dartmouth Workshop)</td>
+                            </tr>
+                            <tr>
+                                <th>Key Applications:</th>
+                                <td id="info-apps">Machine Learning, NLP, Robotics, Vision</td>
+                            </tr>
+                            <tr>
+                                <th>Key Figures:</th>
+                                <td id="info-figures">Alan Turing, John McCarthy, Marvin Minsky</td>
+                            </tr>
+                            <tr>
+                                <th>Status:</th>
+                                <td>Active Research & Production</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </aside>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section container">
+            <div class="about-card">
+                <div class="about-content">
+                    <h2 class="about-title">About WikiExplore</h2>
+                    <p class="about-lead">
+                        WikiExplore is a static, modern encyclopedia platform built to promote open knowledge sharing and interactive exploration across scientific, technological, and historical domains.
+                    </p>
+                    <p>
+                        Designed with simplicity and clarity in mind, WikiExplore brings rich educational summaries, verified references, and organized topical navigation to learners worldwide.
+                    </p>
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <span class="feature-icon">📖</span>
+                            <h4>Curated Articles</h4>
+                            <p>Structured topics covering modern science, history, and computational advances.</p>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">⚡</span>
+                            <h4>Fast & Static</h4>
+                            <p>Lightweight, instant browsing without heavy dependencies or server lag.</p>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🔍</span>
+                            <h4>Dynamic Search</h4>
+                            <p>Quick lookup across our topic library with real-time matching.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container container">
+            <div class="footer-col brand-col">
+                <div class="footer-logo">
+                    <span class="logo-icon">🌐</span>
+                    <span class="footer-title">WikiExplore</span>
+                </div>
+                <p class="footer-desc">
+                    Knowledge at your fingertips. A modern encyclopedia interface designed for learning and discovery.
+                </p>
+                <div class="challenge-notice">
+                    🏆 <strong>Code & Debug Challenge Edition</strong>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#explore">Explore Articles</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#article">Featured Article</a></li>
+                    <li><a href="#about">About WikiExplore</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Categories</h4>
+                <ul class="footer-links">
+                    <li><a href="#categories">Science & Nature</a></li>
+                    <li><a href="#categories">Technology & Computing</a></li>
+                    <li><a href="#categories">History & Civilizations</a></li>
+                    <li><a href="#categories">Space & Astronomy</a></li>
+                    <li><a href="#categories">Environment & Climate</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Project Info</h4>
+                <p class="footer-text-sm">
+                    This project is designed as an interactive debugging and frontend enhancement challenge for college students.
+                </p>
+                <p class="footer-text-sm">
+                    Explore the source, identify issues, and polish the user interface.
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-inner">
+                <p>&copy; 2026 WikiExplore. Made for Code & Debug Challenge. Open Educational Resource.</p>
+                <p class="footer-subtext">All sample content is for educational demonstration purposes.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Search Modal for Full Results -->
+    <div id="search-modal" class="search-modal">
+        <div class="search-modal-content">
+            <div class="search-modal-header">
+                <h3>Search Results for "<span id="modal-search-term"></span>"</h3>
+                <button id="close-modal-btn" class="close-modal-btn">&times;</button>
+            </div>
+            <div id="modal-results-list" class="modal-results-list">
+                <!-- Injected via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
