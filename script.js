@@ -519,10 +519,6 @@ function renderArticlesGrid() {
 function filterArticlesByCategory(category, list = articles) {
     if (category === 'all') return list;
 
-    if (category === 'Environment') {
-        return list.filter(article => article.category === 'Ecology');
-    }
-
     return list.filter(article => article.category === category);
 }
 
@@ -531,11 +527,9 @@ function filterArticlesByCategory(category, list = articles) {
  */
 function sortArticles(sortBy, list) {
     if (sortBy === 'az') {
-        return list.sort((a, b) => {
-            return a.title > b.title ? 1 : 0;
-        });
+        return [...list].sort((a, b) => a.title.localeCompare(b.title));
     } else if (sortBy === 'category') {
-        return list.sort((a, b) => a.category.localeCompare(b.category));
+        return [...list].sort((a, b) => a.category.localeCompare(b.category));
     }
     return list;
 }
@@ -763,7 +757,7 @@ function closeModal() {
 // ==========================================================================
 function toggleBookmark(e) {
     e.stopPropagation();
-    const btn = document.querySelector('.bookmark-btn');
+    const btn = e.currentTarget;
     if (btn) {
         btn.classList.toggle('active');
     }
