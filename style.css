@@ -583,7 +583,7 @@ section {
    -------------------------------------------------------------------------- */
 .popular-cards-row {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     gap: 16px;
     overflow: visible;
 }
@@ -597,6 +597,8 @@ section {
     box-shadow: var(--card-shadow);
     cursor: pointer;
     transition: var(--transition);
+    display: flex;
+    flex-direction: column;
 }
 
 .popular-card:hover {
@@ -621,6 +623,7 @@ section {
     color: var(--text-secondary);
     line-height: 1.4;
     margin-bottom: 12px;
+    flex: 1;
 }
 
 .card-link {
