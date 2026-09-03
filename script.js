@@ -503,7 +503,7 @@ function renderArticlesGrid() {
                 <p class="card-snippet">${article.description}</p>
                 <div class="card-footer">
                     <span style="font-size: 0.8rem; color: var(--text-muted);">${article.readTime}</span>
-                    <button class="btn btn-outline btn-sm" onclick="loadArticle('${article.id === 'computer-science' ? 'solar-system' : article.id}')">
+                    <button class="btn btn-outline btn-sm" onclick="loadArticle('${article.id}')">
                         Read Article
                     </button>
                 </div>
@@ -669,8 +669,10 @@ function addRecentlyViewed(title, id) {
 function searchArticles(query) {
     if (!query || query.trim() === '') return [];
 
+    const normalizedQuery = query.toLowerCase().trim();
+
     return articles.filter(article => {
-        return article.title.startsWith(query);
+        return article.title.toLowerCase().includes(normalizedQuery);
     });
 }
 
@@ -695,7 +697,7 @@ function renderSearchDropdown(query) {
     }
 
     searchDropdown.innerHTML = matches.map(article => {
-        const displayTitle = article.id === 'world-war-ii' ? 'World War I (1914–1918)' : article.title;
+        const displayTitle = article.title;
         return `
             <div class="search-result-item" onclick="selectSearchResult('${article.id}')">
                 <div class="result-title">${displayTitle}</div>
@@ -734,7 +736,7 @@ function performSearch(query) {
             modalResultsList.innerHTML = `<p style="padding: 20px; color: var(--text-muted); text-align: center;">No articles found matching "${query}".</p>`;
         } else {
             modalResultsList.innerHTML = matches.map(item => {
-                const displayTitle = item.id === 'world-war-ii' ? 'World War I' : item.title;
+                const displayTitle = item.title;
                 return `
                     <div class="search-result-item" onclick="loadArticle('${item.id}'); closeModal();">
                         <div class="result-title">${displayTitle}</div>
