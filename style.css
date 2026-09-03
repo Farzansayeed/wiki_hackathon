@@ -6,6 +6,7 @@
 :root {
     --bg-primary: #f8f9fa;
     --bg-surface: #ffffff;
+    --bg-surface-rgb: 255, 255, 255;
     --bg-subtle: #f0f2f5;
     --text-primary: #202122;
     --text-secondary: #54595d;
@@ -29,6 +30,7 @@
 body.dark-theme {
     --bg-primary: #121418;
     --bg-surface: #1e2229;
+    --bg-surface-rgb: 30, 34, 41;
     --bg-subtle: #272d37;
     --text-primary: #eaecf0;
     --text-secondary: #c8ccd1;
@@ -810,7 +812,7 @@ section {
 
 .card-header-banner {
     height: 110px;
-    background: linear-gradient(135deg, #2a4b8d 0%, #3366cc 100%);
+    background: linear-gradient(135deg, var(--accent-hover) 0%, var(--accent-blue) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -825,7 +827,7 @@ section {
     position: absolute;
     top: 10px;
     right: 10px;
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(var(--bg-surface-rgb, 255, 255, 255), 0.85);
     border: none;
     width: 32px;
     height: 32px;
@@ -836,12 +838,12 @@ section {
     font-size: 1rem;
     cursor: pointer;
     transition: var(--transition);
-    color: #555;
+    color: var(--text-secondary);
 }
 
 .bookmark-btn.active {
-    color: #e67e22;
-    background: #ffffff;
+    color: var(--accent-blue);
+    background: var(--bg-surface);
 }
 
 .card-content {
