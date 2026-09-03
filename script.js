@@ -831,7 +831,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Header Search button click
     if (searchBtn) {
         searchBtn.addEventListener('click', () => {
-            const query = document.getElementById('search-query').value;
+            const query = navSearchInput.value;
             performSearch(query);
         });
     }
