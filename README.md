@@ -1,6 +1,8 @@
 # 🌐 WikiExplore — Knowledge at Your Fingertips
 
 > The free encyclopedia, rebuilt as a living reading experience — powered 100% by live Wikipedia data. No database. No backend. No excuses. Just you, a browser, and **every one of Wikipedia's 66 million articles**.
+>
+> 🌍 **Live now:** [**wiki-explore.vercel.app**](https://wiki-explore.vercel.app) — deployed straight from this repo.
 
 ## ✨ What This Is
 
@@ -60,7 +62,14 @@ WikiExplore isn't another static list of canned articles behind a fake "library.
 
 ## 🚀 Run It
 
-No install. No `npm i`. Open the file — or serve it:
+No install. No `npm i`. Catch it live, or run it yourself:
+
+```bash
+# catch the live deployment instead — no setup at all
+explorer https://wiki-explore.vercel.app
+```
+
+Or run it locally:
 
 ```bash
 # any static server will do
